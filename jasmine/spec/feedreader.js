@@ -1,9 +1,3 @@
-/* feedreader.js
- *
- * This is the spec file that Jasmine will read and contains
- * all of the tests that will be run against your application.
- */
-
 /* We're placing all of our tests within the $() function,
  * since some of these tests may require DOM elements. We want
  * to ensure they don't run until the DOM is ready.
@@ -111,14 +105,32 @@ $(function() {
             done();
         });
 
+    });
+
     /* TODO: Write a new test suite named "New Feed Selection" */
+    describe('New Feed Selection', () =>{
+        let newEntry, oldEntry;
+
+        beforeEach((done) =>{
+            loadFeed(0, () =>{
+               oldEntry = $('.feed').html();
+
+               loadFeed(1, ()=>{
+                   newEntry = $('.feed').html();
+                   done();
+                });
+
+            });
+
+        });
 
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
-
-
-
+        it('content actually changes', (done)=>{
+           expect(newEntry).not.toBe(oldEntry);
+           done();
+        });
     });
 }());
