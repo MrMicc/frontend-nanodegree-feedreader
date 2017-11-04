@@ -101,7 +101,7 @@ $(function() {
          */
 
         it('loadFeed are loaded', (done) =>{
-            expect($('.feed').length).not.toBe(0);
+            expect($('.feed .entry').length).not.toBe(0);
             done();
         });
 
